@@ -1,0 +1,8 @@
+# from galaxy
+- role: geerlingguy.apache
+- role: geerlingguy.mysql
+- role: geerlingguy.php
+- role: geerlingguy.apache-php-fpm
+- role: geerlingguy.php-versions
+- role: darthwade.wordpress
+- role: geerlingguy.php-mysql

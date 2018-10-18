@@ -1,0 +1,13 @@
+---
+- name: Install WordPress, MySQL, Nginx, and PHP-FPM
+  hosts: all
+  sudo: yes
+
+  roles:
+    - role: geerlingguy.apache
+    - role: geerlingguy.mysql
+    - role: geerlingguy.php-versions
+    - role: geerlingguy.php
+    - role: geerlingguy.php-mysql
+    - role: geerlingguy.apache-php-fpm
+    - role: darthwade.wordpress
