@@ -3,6 +3,32 @@
   hosts: all
   sudo: yes
 
+    vars:
+    #Set PHP version
+    php_version: '5.6'
+
+    #Set Apache vars
+    php_enable_php_fpm: true
+    apache_vhosts:
+      - servername: {{ec2_public_dns_name}}}
+        documentroot: "/var/sites/awesome_wordpress_site"
+        extra_parameters: |
+              ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000//var/sites/awesome_wordpress_site"
+
+    #Set mySQL
+    mysql_databases:
+    - name: wordpress1db
+      encoding: latin1
+      collation: latin1_general_ci
+
+    #Set Wordpress vars
+    wp_version: 4.0
+    wp_install_dir: '/var/sites/awesome_wordpress_site'
+    wp_db_name: 'wordpress1db'
+    wp_db_host: 'localhost'
+    wp_db_user: 'root'
+    wp_db_password: 'root'
+
   roles:
     - role: geerlingguy.apache
     - role: geerlingguy.mysql
